@@ -8,9 +8,10 @@ dc$DateTime <- as.POSIXct(paste(dc$Date, dc$Time), format="%d/%m/%Y %H:%M:%S")
 #Retrieve the data rows for 2007/02/01 & 02
 dcfeb <- subset(dc, DateTime >= as.POSIXct("2007/02/01") & DateTime < as.POSIXct("2007/02/03"))
 
+#Set the plot device
+png(file = "plot1.png")
+
 #Plot the histogram: plot1
 hist(dcfeb$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
 
-#Export as plot3.png
-dev.copy(png, file = "plot1.png")
 dev.off()

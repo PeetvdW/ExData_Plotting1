@@ -7,6 +7,9 @@ dc$DateTime <- as.POSIXct(paste(dc$Date, dc$Time), format="%d/%m/%Y %H:%M:%S")
 #Retrieve the data rows for 2007/02/01 & 02
 dcfeb <- subset(dc, DateTime >= as.POSIXct("2007/02/01") & DateTime < as.POSIXct("2007/02/03"))
 
+#Set the plot device
+png(file = "plot4.png")
+
 #Set the screen to show four plot
 par(mfrow=c(2,2))
 
@@ -27,6 +30,4 @@ legend("topright"
 #plot(2,2)
 plot(dcfeb$Global_reactive_power~dcfeb$DateTime,ylab="Global_reactive_power",xlab="datetime",lty=1,lwd=1,type="l")
 
-#Export as plot4.png
-dev.copy(png, file = "plot4.png")
 dev.off()

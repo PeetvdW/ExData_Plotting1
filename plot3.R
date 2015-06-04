@@ -8,6 +8,10 @@ dc$DateTime <- as.POSIXct(paste(dc$Date, dc$Time), format="%d/%m/%Y %H:%M:%S")
 #Retrieve the data rows for 2007/02/01 & 02
 dcfeb <- subset(dc, DateTime >= as.POSIXct("2007/02/01") & DateTime < as.POSIXct("2007/02/03"))
 
+
+#Set the plot device
+png(file = "plot3.png")
+
 #Plot the scatter plot: plot3
 plot(dcfeb$Sub_metering_1~dcfeb$DateTime,ylab="Energy Sub Metering",xlab="",lty=1,lwd=1,type="l")
 lines(dcfeb$Sub_metering_2~dcfeb$DateTime,lty=1,lwd=1,type="l",col="red")
@@ -17,6 +21,4 @@ legend("topright"
        , col=c("black","red","blue")
        , lty=c(1,1,1),cex=0.75)
 
-#Export as plot3.png
-dev.copy(png, file = "plot3.png")
 dev.off()
